@@ -1,1 +1,53 @@
-Solution to find pi upto nth digits
+#Solution to find pi upto nth digits
+
+#Finding pi value using Bailey–Borwein–Plouffe formula
+
+#Logic from http://blog.recursiveprocess.com/2013/03/14/calculate-pi-with-python/
+
+
+from decimal import *
+import math
+
+getcontext().prec=20
+
+def factorial(n):
+    if n<1:
+        return(1)
+    else:
+        return(n*factorial(n-1))
+
+
+def Bailey(n):
+
+    total=0
+    for n in range(n):
+
+        total=total+(Decimal(1)/(16**n))*((Decimal(4)/(8*n+1))-(Decimal(2)/(8*n+4))-(Decimal(1)/(8*n+5))-(Decimal(1)/(8*n+6)))
+
+    return(total)
+
+def Bellard(n):
+
+    total=Decimal(0)
+    for n in range(n):
+        pass
+        total = total + (Decimal(-1)**n/(2**(10*n)) * (Decimal(2**8)/(10*n+1) + Decimal(1)/(10*n+9) - Decimal(2**5)/(4*n+1)- Decimal(1)/(4*n+3) - Decimal(2**6)/(10*n+3) - Decimal(2**2)/(10*n+5) - Decimal(2**2)/(10*n+7)))
+    total=total* 1/(2**6)
+    return(total)
+
+def Chudnovsky(n):
+    up = Decimal(0)
+    down = Decimal(0)
+    pi = Decimal(0)
+    for n in range(n):
+        up= up + ((-1)**n) * factorial(6* n) * (13591409+545140134*n)
+        down += (factorial(3*n) * (factorial(n)**3) * 640320**(3*n))
+        pi += (Decimal(up)/Decimal(down))
+    pi = pi * Decimal(12)/Decimal(640320**Decimal(1.5))
+    pi = 1 / Decimal(pi)
+    return(pi)
+
+n=int(input("Enter number of digits to be displayed for pi value:"))
+
+for n in range(1,n):
+    print("Iteration:",n,"PI value is:",Bailey(n),Bellard(n),Chudnovsky(n))
