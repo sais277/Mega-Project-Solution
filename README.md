@@ -7,5 +7,4 @@ Link:-https://github.com/karan/Projects/
 
 1.Numbers
 
-    1.[PI.py](https://github.com/sais277/Mega-Project-Solution/blob/Numbers/Finding%20pi) Finding pi value upto nth digit
-
+    1.<a href="https://github.com/sais277/Mega-Project-Solution/blob/Numbers/Finding%20pi">PI-PYTHON Finding pi value upto nth digit
